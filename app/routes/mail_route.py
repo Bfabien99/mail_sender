@@ -28,10 +28,11 @@ async def update_patch_mail(request: Request, id: int, item: MailUpdate, db: DBS
     return mail_controller.update_mail(id, item, db)
 
 @router.post("/send")
-@limiter.limit("2/minutes")
+@limiter.limit("5/minutes")
 async def send_mail(request: Request, id: int, db: DBSession):
     try:
         if mail_controller.sent_pending_mail(id, db):
             return JSONResponse(content={"message": "Mail sent"}, status_code=200)
     except Exception as e:
+        print(e.__dict__)
         return JSONResponse(content={"error": str(e)}, status_code=500)

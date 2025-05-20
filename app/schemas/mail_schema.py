@@ -7,8 +7,8 @@ class MailBase(BaseModel):
 class MailCreate(MailBase):
     subject: str
     body: str
-    send_by: str
-    send_to: str
+    send_by: str = "mytestomailer@gmail.com"
+    send_to: str =  "kouadiostephanefabienbrou@gmail.com"
     cc: Optional[str] = None
     bcc: Optional[str] = None
 
