@@ -1,4 +1,4 @@
-from app.core.database import Base, engine
+from app.core.database import Base
 from sqlalchemy import Column, Integer, String, Boolean, func, DateTime
 
 class MailModel(Base):
@@ -14,4 +14,3 @@ class MailModel(Base):
     sent = Column(Boolean, default=False)
     sent_date = Column(DateTime, nullable=True)
 
-Base.metadata.create_all(engine)
